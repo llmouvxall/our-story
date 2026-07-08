@@ -1,0 +1,54 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For My Favorite Person</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;font-family:Georgia;background:linear-gradient(#071226,#2c2155,#f3d35d);color:#fff}
+#bg,#float{position:fixed;inset:0;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 2s infinite}
+@keyframes twinkle{50%{opacity:.25}}
+.item{position:absolute;bottom:-5vh;font-size:24px;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-110vh) rotate(20deg)}}
+.center{display:flex;align-items:center;justify-content:center;height:100%}
+#env{width:260px;height:170px;background:#fff;border-radius:10px;position:relative;cursor:pointer;box-shadow:0 10px 30px #0008}
+#env:before{content:"";position:absolute;left:0;top:0;border-left:130px solid transparent;border-right:130px solid transparent;border-top:90px solid #f0cb53}
+#label{position:absolute;bottom:18px;width:100%;text-align:center;color:#333;font-weight:bold}
+#card{display:none;position:absolute;inset:5%;overflow:auto;background:#fffdf5;color:#4f4200;border-radius:20px;padding:28px}
+h1{text-align:center}.btn{display:inline-block;background:#f3d35d;color:#333;padding:10px 18px;border-radius:20px;text-decoration:none}
+</style></head><body>
+<div id=bg></div><div id=float></div>
+<div class=center><div id=env><div id=label>💌 Tap to Open</div></div>
+<div id=card>
+<h1>🌷 To My Favorite Person 💛</h1>
+<p id=timer style="text-align:center;font-weight:bold"></p>
+<p id=letter></p>
+<h2>Our Story Has Only Just Begun...</h2>
+<p>We don't have pictures together yet, but one day we'll look back at this page with a gallery full of memories. Until then, every conversation with you is a memory I treasure.</p>
+<p style="text-align:center;font-size:34px">🌷💛🌷</p>
+<p style="text-align:center"><a class=btn href="https://www.youtube.com/watch?v=yKNxeF4KMsY" target="_blank">▶ Play Our Song</a></p>
+</div></div>
+<script>
+for(let i=0;i<140;i++){let s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';bg.appendChild(s);}
+for(let i=0;i<50;i++){let e=document.createElement('div');e.className='item';e.textContent=Math.random()>.5?'🌷':'💛';e.style.left=Math.random()*100+'vw';e.style.animationDuration=(8+Math.random()*8)+'s';e.style.animationDelay=(Math.random()*8)+'s';float.appendChild(e);}
+const msg=`If someone had asked me what love felt like before I met you, I wouldn't have known how to answer.
+
+Now I do.
+
+You make ordinary days feel extraordinary.
+
+We don't have pictures together yet, but somehow my heart already holds so many beautiful memories of us.
+
+Every conversation, every laugh, every moment we share has become something I'll always treasure.
+
+One day we'll fill our gallery with photos, but until then, my favorite memories are the ones we've created with our hearts.
+
+Thank you for being part of my life.
+
+If I had the chance to choose again, I would still choose you.
+
+Every single time.
+
+I love you. 💛`;
+env.onclick=()=>{env.style.display='none';card.style.display='block';let i=0;let t=setInterval(()=>{letter.textContent=msg.slice(0,++i);if(i>=msg.length)clearInterval(t);},22);}
+function tick(){let s=new Date('2026-04-16');let n=new Date();let d=n-s;if(d<0){timer.textContent='Together since 16 April 2026';return;}let x=Math.floor(d/1000),days=Math.floor(x/86400);x%=86400;let h=Math.floor(x/3600);x%=3600;let m=Math.floor(x/60);let sec=x%60;timer.textContent=`Together for ${days} days, ${h} hours, ${m} minutes and ${sec} seconds 💛`;}
+setInterval(tick,1000);tick();
+</script></body></html>
